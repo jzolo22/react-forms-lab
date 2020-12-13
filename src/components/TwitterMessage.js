@@ -3,22 +3,21 @@ import React from "react";
 class TwitterMessage extends React.Component {
 
   state = {
-    message: "",
-    charsLeft: 280
+    message: ""
   }
 
   handleType = event => {
-    console.log(event.target.value)
-    this.setState({message: event.target.value, charsLeft: this.state.charsLeft - 1 })
+    this.setState({message: event.target.value})
   }
 
 
   render() {
+    let numLeft = this.props.maxChars - this.state.message.length
     return (
       <div>
         <strong>Your message:</strong>
         <input type="text" name="message" id="message" value={this.state.message} onChange={this.handleType} />
-        <h4>{this.state.charsLeft} characters left</h4>
+        <h4>{numLeft} characters left</h4>
       </div>
     );
   }
